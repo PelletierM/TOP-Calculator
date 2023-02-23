@@ -51,3 +51,22 @@ function calculate(input) {
     input = calculateOperator(calculateOperator(calculateOperator(calculateOperator(calculateOperator((combineParenthesis(input)), "^"), "*"), "/"), "+"), "-");
     return input
     }
+
+// BUTTON EVENT LISTENERS
+const currentOperationText = document.querySelector(".currentOperationText")
+const resultText = document.querySelector(".resultText")
+
+const allButtons = document.querySelector(".allButtons")
+allButtons.addEventListener("click", function(e){
+    if(e.target.nodeName === "BUTTON") {
+    userInput.push(e.target.innerText)
+    }
+    currentOperationText.innerText = userInput.join("")
+    equalButton(e);
+})
+
+function equalButton(e) {
+    if(e.target.innerText === "=") {
+    resultText.innerText = calculate(userInput).join("");
+    }
+}
