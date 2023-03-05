@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <title>Calculator</title>
     <script src="./js/main.js" defer></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
@@ -11,40 +15,60 @@
 <div class="main">
     <div class="calculator">
         <div class="calculator-display">
-            <p class="history"></p>
-            <p class="calculation-text"></p>
             <p class="active-text"></p>
+            <p class="calculation-text"></p>
         </div>
-        <div class="all-buttons">
-            <div class="number-buttons">
-                <button class="number" value="0">0</button>
-                <button class="number" value="1">1</button>
-                <button class="number" value="2">2</button>
-                <button class="number" value="3">3</button>
-                <button class="number" value="4">4</button>
-                <button class="number" value="5">5</button>
-                <button class="number" value="6">6</button>
-                <button class="number" value="7">7</button>
-                <button class="number" value="8">8</button>
-                <button class="number" value="9">9</button>
-                <button class="plus-minus" value="-">±</button>
-                <button class="point" value=".">.</button>
-                <button class="ans" value="ans">Ans</button>            
+        <div class="calculator-menu">
+            <div class="remove-menu">
+                <button class="clear-all">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="36" viewBox="0 96 960 960" width="36"><path shape-rendering="geometricPrecision" fill="currentColor" d="M451 960q-133-11-224.5-109T135 618q0-79 35.5-149.5T270 351l67 67q-50 32-79 86t-29 114q0 97 63.5 167T451 865v95Zm60 0v-95q97-11 159-80.5T732 618q0-100-67.5-172T497 368h-23l64 65-51 51-168-168 168-169 51 51-75 75h24q142 0 241 101.5T827 618q0 135-91.5 233T511 960Z"/></svg>
+                </button>
+                <button class="backspace" value="backspace">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="36" viewBox="0 96 960 960" width="36"><path shape-rendering="geometricPrecision" fill="currentColor"  d="m451 740 110-109 110 109 55-55-110-109 108-109-55-56-108 110-110-110-56 56 111 109-111 109 56 55ZM92 576l178-252q17.667-25.118 43.045-39.559Q338.424 270 368 270h406q39.188 0 67.094 27.906Q869 325.812 869 365v422q0 38.775-27.906 66.388Q813.188 881 774 881H368q-29.576 0-54.965-14.676Q287.645 851.647 270 828L92 576Zm117 0 148 211h417V365H357L209 576Zm565 0V365v422-211Z"/></svg>
+                </button>
             </div>
-            <div class="operator-buttons">
-                <button class="open-parenthesis" value="(">(</button>
-                <button class="closed-parenthesis" value=")">)</button>
-                <button class="operator" value="^">^</button>
-                <button class="operator" value=" x ">x</button>
-                <button class="operator" value=" / ">/</button>
-                <button class="operator" value=" + ">+</button>
-                <button class="operator" value=" - ">-</button>
+            <div class="main-menu">
+                <div class="number-buttons">
+                    <button class="number" value="7">7</button>
+                    <button class="number" value="8">8</button>
+                    <button class="number" value="9">9</button>
+                    <button class="number" value="4">4</button>
+                    <button class="number" value="5">5</button>
+                    <button class="number" value="6">6</button>
+                    <button class="number" value="1">1</button>
+                    <button class="number" value="2">2</button>
+                    <button class="number" value="3">3</button>
+                    <button class="number" id="num-zero" value="0">0</button>
+                    <button class="point" value=".">.</button>         
+                </div>
+                <div class="operator-buttons">
+                    <button class="open-parenthesis" value="(">(</button>
+                    <button class="closed-parenthesis" value=")">)</button>
+                    <div></div>
+                    <button class="operator" value=" x ">&times;</button>
+                    <button class="operator" value=" / ">&div;</button>
+                    <button class="operator" value="^"><p>x<sup>y</sup></p></button>
+                    <button class="operator" value=" + ">+</button>
+                    <button class="operator" value=" - ">-</button>
+                    <button class="plus-minus" value="-">+/-</button>
+                    <button class="equal" id="op-equal" value=" = ">=</button>
+                    <button class="ans" value="ans">Ans</button>   
+                </div>
             </div>
-            <div class="equal-button">
-                <button class="equal" value=" = ">=</button>
-                <button class="backspace" value="backspace">CE</button>
-                <button class="clear-all">C</button>
-                <button class="clear-history">Clear History</button>
+            <div class="toggle-history-cont">
+                <button class="toggle-history">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="32" viewBox="0 96 960 960" width="32"><path shape-rendering="geometricPrecision" fill="currentColor" d="M476.056 961Q315 961 203.795 848.573 92.591 736.147 94 575h94q1.152 121.3 84.005 206.65Q354.859 867 476 867q122 0 208-86.321t86-209.5Q770 451 683.627 368T476 285q-60 0-113.5 24.5T268 376h84v73H123V222h71v95q55-59 127.5-93T476 190q80 0 150.5 30.5t123.74 82.511q53.241 52.011 83.5 121.5Q864 494 864 574t-30.26 150.489q-30.259 70.489-83.5 123Q697 900 626.5 930.5 556 961 476.056 961ZM600 745 446 593V373h71v189l135 131-52 52Z"/></svg>
+                </button>    
+            </div>  
+            <div class="history-bg-cont">
+                <div class="history-bg"></div>
+            </div>  
+            <div class="history-menu">
+                <button class="clear-history">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="32" viewBox="0 96 960 960" width="32"><path shape-rendering="geometricPrecision" fill="currentColor" d="M253 961q-40.212 0-67.606-27.1Q158 906.8 158 867V314h-58v-94h231v-48h297v48h232v94h-58v553q0 39.05-27.769 66.525Q746.463 961 707 961H253Zm454-647H253v553h454V314ZM354 789h77V390h-77v399Zm175 0h78V390h-78v399ZM253 314v553-553Z"/></svg>
+                </button>
+                <div class="history-text">
+                </div>
             </div>
         </div>
     </div>

@@ -98,25 +98,27 @@ let ans = {
 let history = {}
 
 // BUTTON EVENT LISTENERS
-const historyText = document.querySelector(".history")
+const historyText = document.querySelector(".history-text")
 const calculationText = document.querySelector(".calculation-text")
 const activeText = document.querySelector(".active-text")
-const buttonsContainer = document.querySelector(".all-buttons")
-buttonsContainer.addEventListener("click", function(e){
+const calculatorContainer = document.querySelector(".calculator")
+calculatorContainer.addEventListener("click", function(e){
     if(e.target.nodeName === "BUTTON") {
-        if(activeString.length === 0 && ans.value !== undefined) {calculationText.innerText = `Ans = ${ans.value}`};
-        if(e.target.classList.contains("number")) appendNumber(e.target.value);
-        else if(e.target.classList.contains("point")) appendPoint(e.target.value);
-        else if(e.target.classList.contains("plus-minus")) togglePlusMinus(e.target.value);
-        else if(e.target.classList.contains("operator")) appendOperator(e.target.value);
-        else if(e.target.classList.contains("open-parenthesis")) appendOpenParenthesis();
-        else if(e.target.classList.contains("closed-parenthesis")) appendClosedParenthesis();
-        else if(e.target.classList.contains("ans")) appendAns();
+        if(activeString.length === 0 && ans.value !== undefined) {calculationText.innerText = `Ans = ${ans.value}`}
+        else if(activeText.innerText == errorMessage) {calculationText.innerText = `Ans = ${errorMessage}`};
+        if(e.target.classList.contains("number")) appendNumber(e.target.value)
+        else if(e.target.classList.contains("point")) appendPoint(e.target.value)
+        else if(e.target.classList.contains("plus-minus")) togglePlusMinus(e.target.value)
+        else if(e.target.classList.contains("operator")) appendOperator(e.target.value)
+        else if(e.target.classList.contains("open-parenthesis")) appendOpenParenthesis()
+        else if(e.target.classList.contains("closed-parenthesis")) appendClosedParenthesis()
+        else if(e.target.classList.contains("ans")) appendAns()
         else if(e.target.classList.contains("backspace")) executeBackspace();
         activeText.innerText = activeString;
         if(e.target.classList.contains("equal")) triggerEqual();
         if(e.target.classList.contains("clear-all")) clearAll();
         if(e.target.classList.contains("clear-history")) clearHistory();
+        if(e.target.classList.contains("toggle-history")) toggleHistory();
     }
 })
 
@@ -382,9 +384,27 @@ function clearAll() {
     calculationText.innerText = "";
 }
 
+/* HISTORY BUTTONS AND EVENT HANDLERS */
 function clearHistory() {
     history = {}
     while (historyText.firstChild) {
         historyText.removeChild(historyText.lastChild)
+    }
+}
+
+const historyMenu = document.querySelector(".history-menu")
+const historyBgCont = document.querySelector(".history-bg-cont")
+const historyBg = document.querySelector(".history-bg")
+
+function toggleHistory() {
+    if (!historyMenu.classList.contains("active")) {
+        historyMenu.classList.add("active");
+        historyBgCont.classList.add("active");
+        historyBg.classList.add("active");
+    }
+    else {
+        historyMenu.classList.remove("active");
+        historyBgCont.classList.remove("active");
+        historyBg.classList.remove("active");
     }
 }
