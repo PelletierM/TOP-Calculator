@@ -1,93 +1,78 @@
 :root {
     --main-text-color: rgb(64, 64, 64);
     --grey-dark : rgb(120, 120, 120);
-    --grey-medium: rgb(200, 200, 200);
-    --grey-light: rgb(242, 242, 242);
-    --main-color-dark: rgb(50, 104, 117);
-    --main-color-medium: rgb(132, 169, 179);
-    --main-color-light: rgb(203, 221, 227);
-    --main-color-very-light: rgb(240, 250, 251);
-    --secondary-color-medium: rgb(233, 141, 137);
-    --secondary-color-dark: rgb(191, 97, 92);
-    --hover-transition-time: 0.2s;
+    --grey-medium : rgb(200, 200, 200);
+    --grey-light : rgb(242, 242, 242);
+    --main-color-dark : rgb(50, 104, 117);
+    --main-color-medium : rgb(132, 169, 179);
+    --main-color-light : rgb(203, 221, 227);
+    --main-color-very-light : rgb(240, 250, 251);
+    --secondary-color-medium : rgb(233, 141, 137);
+    --secondary-color-dark : rgb(191, 97, 92);
+    --secondary-color-very-dark : rgb(151, 60, 57);
+    --hover-transition-time : 0.2s;
 }
 
-.calculator-display::-webkit-scrollbar, .history-text::-webkit-scrollbar {
-    width: 8px;
+.calculator-text::-webkit-scrollbar, .history-text::-webkit-scrollbar {
+    width : 8px;
 }
 
-.calculator-display::-webkit-scrollbar-thumb, .history-text::-webkit-scrollbar-thumb {
-    background-color: var(--main-color-dark);
-    border-radius: 4px;
+.calculator-text::-webkit-scrollbar-thumb, .history-text::-webkit-scrollbar-thumb {
+    background-color : var(--main-color-dark);
+    border-radius : 4px;
     border-style : none;
 }
 
 * {
-    font-family: 'Roboto Mono', monospace;
-    font-weight: 400;
-    font-size: 20px;
-    padding: 0px;
-    margin: 0px;
-}
-
-.header {
-    height: 96px;
-}
-
-.footer {
-    height: 96px;
+    font-family : 'Roboto Mono', monospace;
+    font-weight : 400;
+    font-size : 20px;
+    padding : 0px;
+    margin : 0px;
 }
 
 svg, p, sup {
-    pointer-events: none;
+    pointer-events : none;
 }
 
 sup {
-    vertical-align: super;
-    font-size: 12px;
+    vertical-align : super;
+    font-size : 12px;
 }
 
 body {
-    height: 100vh;
-    height: 100svh;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
+    height : 100vh;
+    height : 100svh;
+    display : flex;
+    flex-direction : column;
+    justify-content : space-between;
+    align-items : center;
     background-color : rgb(250, 250, 250);
 }
 
+.header {
+    height : 96px;
+}
 
-/* BUTTON STYLING */
+.footer {
+    height : 96px;
+}
+
+/* 
+BUTTONS
+*/
 button {
-    box-sizing: border-box;
-    border-radius: 16px;
-    border-style: none;
-    padding: 0px;
-    margin: 0px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    transition: var(--hover-transition-time);
-}
-
-.backspace {
-    grid-column : 3 / 4;
-    transform: translate(-4px, 4px);
-}
-
-.backspace, .clear-all {
-    max-width: 36px;
-    max-height: 36px;
-    align-self: center;
-    justify-self : center;
-    background-color : transparent;
-    color : var(--secondary-color-medium);
-    transition: var(--hover-transition-time)
-}
-
-.backspace:hover, .clear-all:hover {
-    color: var(--secondary-color-dark);
+    min-width : 56px;
+    min-height : 56px;
+    box-sizing : border-box;
+    border-radius : 16px;
+    border-style : none;
+    padding : 0px;
+    margin : 0px;
+    display : flex;
+    align-items : center;
+    justify-content : center;
+    transition : var(--hover-transition-time);
 }
 
 .number, .point {
@@ -96,213 +81,282 @@ button {
 }
 
 .number:hover, .point:hover {
-    background-color: var(--grey-medium);
+    background-color : var(--grey-medium);
 }
 
-.number:active, .point:active {
-    background-color: var(--grey-dark);
+.number:active, .point:active, .number.active, .point.active {
+    background-color : var(--grey-dark);
 }
 
 .open-parenthesis, .closed-parenthesis, .operator, .plus-minus, .ans {
     background-color : var(--grey-light);
-    color: var(--main-color-dark);
+    color : var(--main-color-dark);
 }
 
 .open-parenthesis:hover, .closed-parenthesis:hover, .operator:hover, .plus-minus:hover, .ans:hover {
     background-color : var(--main-color-light);
 }
 
-.open-parenthesis:active, .closed-parenthesis:active, .operator:active, .plus-minus:active, .ans:active {
+.open-parenthesis:active, .closed-parenthesis:active, .operator:active, .plus-minus:active, .ans:active,.open-parenthesis.active, .closed-parenthesis.active, .operator.active, .plus-minus.active, .ans.active {
     background-color : var(--main-color-medium);
 }
 
 .equal {
     background-color : var(--main-color-dark);
-    color: var(--grey-light);
+    color : var(--grey-light);
 }
 
 .equal:hover {
     background-color : var(--main-color-medium);
 }
 
-.equal:active {
+.equal:active, .equal.active {
     background-color : var(--main-color-light);
 }
 
-/* CALCULATOR DISPLAY STYLING */
-
-.calculator-display {
-    box-sizing: border-box;
-    background-color: var(--main-color-very-light);
-    height: 144px;
-    max-width: 100%;
-    padding : 8px;
-    display:flex;
-    flex-direction:column-reverse;
-    justify-content: flex-start;
-    align-items: flex-end;
-    overflow: auto;
-    border-radius: 8px;
+/*
+CALCULATOR LAYOUT
+*/
+.calculator {
+    box-sizing : border-box;
+    width : 424px;
+    background-color : white;
+    padding : 32px;
+    border-radius : 24px;
     border-width : 2px;
     border-style : solid;
-    border-color : var(--main-color-dark)
-}
-
-/* CALCULATOR STYLNG */
-
-.calculator {
-    box-sizing: border-box;
-    width: 404px;
-    background-color: white;
-    padding: 24px;
-    border-radius: 24px;
-    border-width: 2px;
-    border-style : solid;
     border-color : var(--main-color-dark);
+    margin : 32px 0px;
 }
 
-/* CALCULATOR STRUCTURE */
+    /*
+    CALCULATOR DISPLAY
+    */
+.calculator-display {
+    padding-top : 8px;
+    background-color : var(--grey-light);
+    border-radius : 8px;
+    border-width : 0px;
+    border-color : var(--main-color-dark);
+    box-shadow : inset 0px 0px 2px 2px rgba(0, 0, 0, 0.1);
+    margin-bottom : 32px;
+    display : grid;
+    grid-template-rows : 5fr 2fr;
+    grid-template-columns : 1fr;
+    gap : 4px;
+}
+
+.calculator-text {
+    grid-row : 1 / 2;
+    grid-column : 1;
+    box-sizing : border-box;
+    height : 132px;
+    max-width : 100%;
+    padding : 0px 8px;
+    display :flex;
+    flex-direction :column-reverse;
+    justify-content : flex-start;
+    align-items : flex-end;
+    overflow : auto;
+}
+
+.result-text {
+    font-size : 24px;
+    text-align : end;
+    padding-bottom : 32px;
+}
 
 .active-text {
     font-size : 24px;
-    text-align: end;
+    text-align : end;
     flex-shrink : 0;
-
-}
-.calculation-text {
-    font-size : 24px;
-    text-align: end;
-    margin-bottom: 24px;
-    
+    min-height : 32px;
 }
 
-.calculator-menu {
-    display: grid;
-    grid-template-rows: 1fr 4fr;
-    grid-template-columns: 1fr 1fr;
-    gap: 4px
+.line-above {
+    grid-row : 2;
+    grid-column : 1;
+    width : 95%;
+    justify-self : center;
+    height : 1px;
+    background-color : var(--grey-medium);
 }
 
 .remove-menu {
-    grid-row: 1;
-    grid-column: 1 / 3;
+    grid-row : 2;
+    grid-column : 1;
     display : grid;
     grid-template-columns : 56px 244px 56px;
 }
 
-.main-menu {
-    grid-row: 2;
-    grid-column: 1 / 3;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4px;
-    z-index: 1;
+.backspace {
+    grid-column : 3 / 4;
+    transform : translate(-2px, 0px);
+}
+
+.backspace, .clear-all {
+    min-width : 36px;
+    min-height : 36px; /* Needs to stay -> Bigger one set for button */
+    max-width : 36px;
+    max-height : 36px;
+    align-self : center;
+    justify-self : center;
+    background-color : transparent;
+    color : var(--secondary-color-medium);
+    transition : var(--hover-transition-time)
+}
+
+.backspace:hover, .clear-all:hover {
+    color : var(--secondary-color-dark);
+}
+
+.backspace:active, .clear-all:active, .backspace.active, .clear-all.active {
+    color : var(--secondary-color-very-dark);
+}
+
+.designerTag {
+    pointer-events : all;
+    font-size : 12px;
+    font-weight : 400;
+    align-self : self-end;
+    justify-self : center;
+    transform :translate(0px, -12px);
+    color : var(--grey-dark);
+}
+
+a:link, a:visited {
+    color : var(--grey-dark);
+    text-decoration : none;
+    transition : var(--hover-transition-time);
+    font-weight : 500;
+}
+
+a:hover {
+    color : var(--secondary-color-medium);
+    transition : var(--hover-transition-time);
+    font-weight : 500;
+}
+
+    /*
+    CALCULATOR MENU
+    */
+.calculator-menu {
+    display : grid;
+    grid-template-columns : repeat(6, 1fr);
+    grid-template-rows : repeat(4, 1fr);
+    gap : 4px;
+    z-index : 1;
 }
 
 .number-buttons {
-    gap: 4px;
-    width:176px;
-    height: 236px;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr 1fr;
+    grid-row : 1 / 5;
+    grid-column : 1 / 4;
+    gap : 4px;
+    display : grid;
+    grid-template-columns : 1fr 1fr 1fr;
+    grid-template-rows : 1fr 1fr 1fr 1fr;
+    z-index : 1;
 }
 
 #num-zero {
-    grid-row: 4 / 4;
-    grid-column: 1 / 3;
+    grid-row : 4 / 4;
+    grid-column : 1 / 3;
 }
 
 .operator-buttons {
-    gap: 4px;
-    width:176px;
-    height: 236px;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr 1fr;
+    grid-row : 1 / 5;
+    grid-column : 4 / 7;
+    gap : 4px;
+    display : grid;
+    grid-template-columns : 1fr 1fr 1fr;
+    grid-template-rows : 1fr 1fr 1fr 1fr;
+    z-index : 1;
 }
 
 #op-equal {
-    grid-row: 4 / 4;
-    grid-column: 1 / 3;
+    grid-row : 4 / 4;
+    grid-column : 1 / 3;
 }
 
-.toggle-history-cont {
-    grid-row : 2;
-    grid-column : 2;
-    background-color : transparent;
-    z-index : 10;
-    width: 56px;
-    height: 56px;
-    align-self: self-start;
-    justify-self: self-end;
-    display: flex;
-    justify-content:center;
-    align-items:center;
-    pointer-events: none;
-}
-
+    /*
+    HISTORY
+    */
 .toggle-history {
-    background-color: transparent;
-    border-style: none;
+    grid-row : 1 / 2;
+    grid-column : 6 / 7;
+    background-color : transparent;
+    border-style : none;
     color : var(--main-color-dark);
-    max-width: 32px;
-    max-height: 32px;
-    z-index: 10;
-    pointer-events: all;
+    min-width : 32px;
+    min-height : 32px; /* Needs to stay -> Bigger one set for button */
+    max-width : 32px;
+    max-height : 32px;
+    z-index : 10;
+    align-self : center;
+    justify-self : center;
+    pointer-events : all;
 }
 
 .toggle-history:hover {
     color : var(--main-color-medium);
 }
 
+.toggle-history:active, .toggle-history.active {
+    color : var(--main-color-light);
+}
+
 .history-menu, .history-bg-cont {
-    border-radius: 16px;
-    border-width: 0px;
+    border-radius : 16px;
+    border-width : 0px;
     width : 356px;
     height : 236px;
-    grid-row: 2;
-    grid-column: 1/3;
-    z-index: 0;
-    opacity: 0;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr 1fr;
-    gap: 4px;
-    overflow: hidden;
-    justify-content: center;
-    align-items: center;
-    position: relative;
+    grid-row : 1 / 5;
+    grid-column : 1/ 7;
+    z-index : 0;
+    opacity : 0;
+    display : grid;
+    grid-template-columns : repeat(6, 1fr);
+    grid-template-rows : repeat(4, 1fr);
+    gap : 4px;
+    overflow : hidden;
+    justify-content : center;
+    align-items : center;
+    position : relative;
 }
 
 .history-menu {
-    transition-timing-function: ease-out;
-    transition: 0.4s;
+    transition-timing-function : ease-out;
+    transition : 0.2s;
 }
 
 .history-bg-cont {
-    transition: 0s;
-    transition-delay:0.3s;
-    pointer-events: none;
+    transition : 0s;
+    transition-delay :0.3s;
+    pointer-events : none;
 }
 
 .history-menu.active {
-    z-index: 5;
-    opacity: 1;
-    transition: 0.3s;
-    transition-delay: 0.15s;
+    z-index : 5;
+    opacity : 1;
+    transition : 0.3s;
+    transition-delay : 0.15s;
+    box-shadow : inset 0px 0px 2px 2px rgba(0, 0, 0, 0.1);
 }
 
 .history-bg-cont.active {
-    z-index: 2;
-    opacity: 1;
-    transition-delay: 0s;
+    z-index : 2;
+    opacity : 1;
+    transition-delay : 0s;
 }
 
 .clear-history {
+    min-width : 32px;
+    min-height : 32px; /* Needs to stay -> Bigger one set for button */
+    max-width : 32px;
+    max-height : 32px;
     grid-row : 2 / 3;
     grid-column : 6 / 7;
-    z-index: 1;
+    z-index : 1;
     align-self : self-start;
     justify-self : center;
 }
@@ -311,43 +365,48 @@ button {
     grid-row : 1 / 2;
     grid-column : 6 / 7;
     background-color : var(--grey-light);
-    width: 20px;
-    height: 20px;
-    border-radius: 10px;
-    border-width: 0px;
-    scale: 0;
-    transition: 0.3s;
-    transition-timing-function: ease-out;
+    width : 20px;
+    height : 20px;
+    border-radius : 10px;
+    border-width : 0px;
+    scale : 0;
+    transition : 0.3s;
+    align-self : center;
+    justify-self : center;
+    transition-timing-function : ease-out;
 }
 
 .history-bg.active {
-    transition: 0.3s;
-    transition-timing-function: ease-in;
+    transition : 0.3s;
+    transition-timing-function : ease-in;
     scale : 40;
 }
 
 .history-text {
-    max-height: 200px;
+    align-self : self-start;
+    max-height : 204px;
     grid-row : 1 / 5;
     grid-column : 1 / 6;
-    z-index: 1;
-    text-align: end;
-    overflow: auto;
-    padding: 8px;
-    padding-right:  16px; 
+    z-index : 1;
+    text-align : end;
+    display : flex;
+    flex-direction : column-reverse;
+    overflow : auto;
+    margin : 16px;
+    margin-right : 0px;
+    padding-right : 24px;
 }
 
-.clear-history {
-    max-width : 32px;
-    max-height : 32px;
+p.para-margin {
+    margin-top : 16px;
 }
 
 .clear-history, .history-text {
-    background-color: transparent;
+    background-color : transparent;
     border-style : none;
-    opacity: 1;
+    opacity : 1;
     transition : var(--hover-transition-time);
-    color: var(--main-color-dark);
+    color : var(--main-color-dark);
 }
 
 .clear-history:hover {
